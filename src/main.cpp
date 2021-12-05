@@ -1,31 +1,15 @@
 #include <LiquidCrystal.h>
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
+#include "header.h"
+#include "characters.h"
+
+
 
 LiquidCrystal lcd_shield(8, 9, 4, 5, 6, 7, 10, POSITIVE);
 LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
-// Creat a set of new characters
-const uint8_t charBitmap[][8] = {{0xc, 0x12, 0x12, 0xc, 0, 0, 0, 0},
-                                 {0x6, 0x9, 0x9, 0x6, 0, 0, 0, 0},
-                                 {0x0, 0x6, 0x9, 0x9, 0x6, 0, 0, 0x0},
-                                 {0x0, 0xc, 0x12, 0x12, 0xc, 0, 0, 0x0},
-                                 {0x0, 0x0, 0xc, 0x12, 0x12, 0xc, 0, 0x0},
-                                 {0x0, 0x0, 0x6, 0x9, 0x9, 0x6, 0, 0x0},
-                                 {0x0, 0x0, 0x0, 0x6, 0x9, 0x9, 0x6, 0x0},
-                                 {0x0, 0x0, 0x0, 0xc, 0x12, 0x12, 0xc, 0x0}
 
-};
-
-// Creat a set of new characters
-byte smiley[8] = {0b00000, 0b00000, 0b01010, 0b00000,
-                  0b00000, 0b10001, 0b01110, 0b00000};
-
-byte armsUp[8] = {0b00100, 0b01010, 0b00100, 0b10101,
-                  0b01110, 0b00100, 0b00100, 0b01010};
-
-byte frownie[8] = {0b00000, 0b00000, 0b01010, 0b00000,
-                   0b00000, 0b00000, 0b01110, 0b10001};
 
 void setup() {
   lcd_shield.backlight();

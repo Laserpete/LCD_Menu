@@ -43,7 +43,7 @@ void setup() {
 
   int charBitmapSize = (sizeof(charBitmap) / sizeof(charBitmap[0]));
 
-  lcd.begin(16, 2);  // initialize the lcd
+  lcd.begin(20, 4);  // initialize the lcd
 
   for (int i = 0; i < charBitmapSize; i++) {
     lcd.createChar(i, (uint8_t *)charBitmap[i]);
@@ -54,6 +54,10 @@ void setup() {
   lcd.print("Hello, ARDUINO ");
   lcd.setCursor(0, 1);  // go to the next line
   lcd.print(" FORUM - fm   ");
+  lcd.setCursor(0,2);
+  lcd.print("Line 3 Test");
+  lcd.setCursor(0,3);
+  lcd.print("Line 4 test");
 }
 
 void loop() {
@@ -63,13 +67,15 @@ void loop() {
   lcd_shield.setCursor(14, 1);
   lcd_shield.print(char(0));
   delay(200);
+
   lcd.home();
+
   // Do a little animation by writing to the same location
-  for (int i = 0; i < 2; i++) {
-    for (int j = 0; j < 16; j++) {
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 20; j++) {
+      lcd.setCursor(j,i);
       lcd.print(char(random(7)));
     }
-    lcd.setCursor(0, 1);
   }
   delay(200);
 }
